@@ -124,8 +124,9 @@ nav{
 
 .hero h1{
   font-family:var(--font-display);font-weight:900;
-  font-size:clamp(2.4rem,7vw,5.4rem);letter-spacing:.01em;line-height:1.02;
+  font-size:clamp(2.4rem,7vw,5.4rem);letter-spacing:.01em;line-height:1.1;
   text-transform:uppercase;position:relative;color:#f2f7ff;
+  display:flex;align-items:center;gap:clamp(10px,2vw,28px);white-space:nowrap;
 }
 .hero h1 .glitch-wrap{position:relative;display:inline-block;}
 .hero h1 .glitch-wrap::before,
@@ -146,6 +147,20 @@ nav{
   91%{transform:translate(3px,2px);clip-path:inset(70% 0 5% 0);opacity:.7;}
   94%{transform:translate(-3px,-1px);clip-path:inset(30% 0 40% 0);opacity:.7;}
   96%{transform:translate(2px,0);clip-path:inset(80% 0 0 0);opacity:0;}
+}
+
+.astro-container{
+  flex-shrink:0;width:clamp(64px,8vw,100px);height:clamp(64px,8vw,100px);
+  animation:astroFloat 4s ease-in-out infinite;
+}
+@keyframes astroFloat{
+  0%,100%{transform:translateY(0) rotate(-3deg);}
+  25%{transform:translateY(-6px) rotate(-1deg);}
+  50%{transform:translateY(-12px) rotate(3deg);}
+  75%{transform:translateY(-4px) rotate(1deg);}
+}
+@media (max-width:600px){
+  .astro-container{width:48px;height:48px;}
 }
 
 .role-line{
@@ -265,23 +280,33 @@ section{padding:130px clamp(20px,7vw,90px);position:relative;}
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;}
 .project-card{
   border:1px solid var(--border);background:var(--bg-panel);display:flex;flex-direction:column;
-  transition:transform .3s, box-shadow .3s, border-color .3s;
+  transition:transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow .4s, border-color .4s;
+  position: relative; overflow: hidden;
 }
-.project-card:hover{transform:translateY(-6px);border-color:var(--border-strong);box-shadow:0 18px 50px rgba(0,229,255,.08);}
+.project-card::before{
+  content: ""; position: absolute; inset: 0; background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(0,229,255,0.06), transparent 40%); opacity: 0; transition: opacity 0.5s; pointer-events: none;
+}
+.project-card:hover::before { opacity: 1; }
+.project-card:hover{transform:translateY(-8px) scale(1.02);border-color:var(--border-strong);box-shadow:0 20px 60px rgba(0,229,255,.12), 0 0 20px rgba(0,229,255,.05) inset;}
 .project-card .p-head{
   display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--border);background:var(--bg-panel-alt);
 }
-.project-card .p-head span{width:9px;height:9px;border-radius:50%;background:var(--text-muted);}
+.project-card .p-head span{width:10px;height:10px;border-radius:50%;background:var(--text-muted); transition: 0.3s;}
+.project-card:hover .p-head span.red { background: #ff5f57; box-shadow: 0 0 8px #ff5f57; }
+.project-card:hover .p-head span.yellow { background: #febc2e; box-shadow: 0 0 8px #febc2e; }
+.project-card:hover .p-head span.green { background: #28c840; box-shadow: 0 0 8px #28c840; }
 .project-card .p-head b{
-  font-family:var(--font-mono);font-size:.7rem;color:var(--green);margin-left:auto;letter-spacing:.05em;
+  font-family:var(--font-mono);font-size:.7rem;color:var(--green);margin-left:auto;letter-spacing:.05em; text-shadow: 0 0 5px rgba(57,255,156,.3);
 }
-.project-card .p-body{padding:26px;flex:1;display:flex;flex-direction:column;}
-.project-card h3{font-family:var(--font-display);font-size:1.08rem;color:var(--text);text-transform:uppercase;margin-bottom:12px;letter-spacing:.02em;}
-.project-card p{color:var(--text-dim);font-size:.92rem;flex:1;}
+.project-card .p-body{padding:26px;flex:1;display:flex;flex-direction:column; position: relative; z-index: 2;}
+.project-card h3{font-family:var(--font-display);font-size:1.1rem;color:var(--text);text-transform:uppercase;margin-bottom:12px;letter-spacing:.02em; transition: color 0.3s;}
+.project-card:hover h3{color:var(--cyan); text-shadow: 0 0 8px rgba(0,229,255,.3);}
+.project-card p{color:var(--text-dim);font-size:.92rem;flex:1; line-height: 1.7;}
 .project-card .p-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
 .project-card .p-tags span{
-  font-family:var(--font-mono);font-size:.68rem;color:var(--violet);border:1px solid rgba(155,107,255,.3);padding:4px 9px;
+  font-family:var(--font-mono);font-size:.68rem;color:var(--violet);border:1px solid rgba(155,107,255,.3);padding:4px 10px; border-radius: 4px; transition: 0.3s; background: rgba(155,107,255,.05);
 }
+.project-card:hover .p-tags span{ border-color: var(--violet); box-shadow: 0 0 10px rgba(155,107,255,.2); background: rgba(155,107,255,.1); }
 
 /* ---------- CONTACT ---------- */
 .contact-panel{
@@ -358,12 +383,12 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offs
 <main>
   <section class="hero">
     <div class="eyebrow">SISTEMA INICIALIZADO // PORTFÓLIO v1.0</div>
-    <h1><span class="glitch-wrap" data-text="EMANUEL KUANZAMBI">EMANUEL KUANZAMBI</span></h1>
+    <h1><span class="glitch-wrap" data-text="EMANUEL KUANZAMBI">EMANUEL KUANZAMBI</span><span class="astro-container" aria-hidden="true"><svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="22" r="18" stroke="var(--cyan)" stroke-width="1.6"/><circle cx="50" cy="22" r="13" fill="var(--bg-panel)" stroke="var(--border-strong)" stroke-width=".8"/><path d="M42 19q8-6 16 0" stroke="var(--cyan)" stroke-width="1.2" opacity=".5"/><rect x="35" y="40" width="30" height="32" rx="7" stroke="var(--cyan)" stroke-width="1.6"/><circle cx="50" cy="52" r="4.5" fill="var(--amber)" opacity=".7"/><rect x="38" y="46" width="24" height="1.5" rx=".8" fill="var(--cyan)" opacity=".25"/><rect x="23" y="42" width="13" height="7" rx="3.5" stroke="var(--cyan)" stroke-width="1.5"/><rect x="64" y="42" width="13" height="7" rx="3.5" stroke="var(--cyan)" stroke-width="1.5"/><rect x="37" y="70" width="11" height="20" rx="5" stroke="var(--cyan)" stroke-width="1.5"/><rect x="52" y="70" width="11" height="20" rx="5" stroke="var(--cyan)" stroke-width="1.5"/><rect x="35" y="88" width="14" height="6" rx="3" stroke="var(--cyan)" stroke-width="1"/><rect x="51" y="88" width="14" height="6" rx="3" stroke="var(--cyan)" stroke-width="1"/><rect x="46" y="34" width="8" height="13" rx="3" fill="var(--bg-panel-alt)" stroke="var(--border)" stroke-width=".8"/><ellipse cx="50" cy="107" rx="4" ry="9" fill="var(--amber)" opacity=".5"><animate attributeName="ry" values="9;13;9" dur=".6s" repeatCount="indefinite"/></ellipse><circle cx="14" cy="18" r="1.2" fill="var(--cyan)" opacity=".5"><animate attributeName="opacity" values=".5;1;.5" dur="1.8s" repeatCount="indefinite"/></circle><circle cx="86" cy="44" r="1" fill="var(--violet)" opacity=".4"><animate attributeName="opacity" values=".4;1;.4" dur="2.2s" repeatCount="indefinite"/></circle><circle cx="18" cy="75" r="1.4" fill="var(--cyan)" opacity=".4"><animate attributeName="opacity" values=".4;1;.4" dur="1.5s" repeatCount="indefinite"/></circle></svg></span></h1>
     <div class="role-line">
       <span class="prompt">emanuel@dev:~$</span>
       <span id="role-text"></span><span class="cursor"></span>
     </div>
-    <p class="tagline">Finalista em Informática de Gestão Financeira e desenvolvedor de software focado em soluções escaláveis, orientadas às necessidades reais do negócio — do código à base de dados, da integração à decisão.</p>
+    <p class="tagline">Licenciado em Informática de Gestão Financeira e desenvolvedor de software focado em soluções escaláveis, orientadas às necessidades reais do negócio — do código à base de dados, da integração à decisão.</p>
     <div class="hero-ctas">
       <a href="#projects" class="btn primary">Ver Projectos</a>
       <a href="#contact" class="btn ghost">Estabelecer Contacto</a>
@@ -371,7 +396,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offs
     <div class="hero-stats">
       <div class="stat"><b>03</b><span>Áreas de Especialização</span></div>
       <div class="stat"><b>10+</b><span>Tecnologias Dominadas</span></div>
-      <div class="stat"><b>04</b><span>Projectos em Destaque</span></div>
+      <div class="stat"><b>05</b><span>Projectos em Destaque</span></div>
     </div>
     <div class="scroll-cue"><span class="line"></span>SCROLL</div>
   </section>
@@ -389,7 +414,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offs
         </div>
         <div class="terminal-body">
           <div class="line"><span class="p1">emanuel@dev</span><span class="comment">:</span><span class="p2">~</span><span class="comment">$</span> cat perfil.txt</div>
-          <div class="out">Sou finalista em Informática de Gestão Financeira e desenvolvedor de software com foco na criação de soluções escaláveis e orientadas às necessidades do negócio. Tenho experiência em desenvolvimento full stack, bases de dados relacionais, integração de sistemas e análise de dados — do frontend ao ETL, da lógica de negócio ao dashboard final.</div>
+          <div class="out">Sou licenciado em Informática de Gestão Financeira e desenvolvedor de software com foco na criação de soluções escaláveis e orientadas às necessidades do negócio. Tenho experiência em desenvolvimento full stack, bases de dados relacionais, integração de sistemas e análise de dados — do frontend ao ETL, da lógica de negócio ao dashboard final.</div>
           <div class="line"><span class="p1">emanuel@dev</span><span class="comment">:</span><span class="p2">~</span><span class="comment">$</span> echo $MOTIVACAO</div>
           <div class="out">Sou movido por desafios, aprendizagem contínua e pela aplicação da tecnologia para optimizar processos e apoiar a tomada de decisões.</div>
           <div class="line"><span class="p1">emanuel@dev</span><span class="comment">:</span><span class="p2">~</span><span class="comment">$</span> <span class="cursor" style="display:inline-block;width:.5em;height:1em;background:var(--cyan);vertical-align:middle;"></span></div>
@@ -398,7 +423,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offs
       <div class="info-panel reveal">
         <div class="info-row">
           <div class="label">Formação</div>
-          <div class="value small">Finalista — Informática de Gestão Financeira</div>
+          <div class="value small">Licenciado — Informática de Gestão Financeira</div>
         </div>
         <div class="info-row">
           <div class="label">Funções</div>
@@ -462,7 +487,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offs
     </div>
     <div class="projects-grid">
       <div class="project-card reveal">
-        <div class="p-head"><span></span><span></span><span></span><b>STATUS: EM PRODUÇÃO</b></div>
+        <div class="p-head"><span class="red"></span><span class="yellow"></span><span class="green"></span><b>STATUS: EM PRODUÇÃO</b></div>
         <div class="p-body">
           <h3>Sistema de Gestão Documental</h3>
           <p>Solução interna desenvolvida para a Kapital360, criada para organizar, controlar e agilizar o fluxo documental da empresa.</p>
@@ -470,7 +495,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offs
         </div>
       </div>
       <div class="project-card reveal">
-        <div class="p-head"><span></span><span></span><span></span><b>STATUS: FUNCIONAL</b></div>
+        <div class="p-head"><span class="red"></span><span class="yellow"></span><span class="green"></span><b>STATUS: FUNCIONAL</b></div>
         <div class="p-body">
           <h3>Calculadora de Impostos</h3>
           <p>Ferramenta que automatiza o cálculo de impostos, reduzindo erros manuais e agilizando a tomada de decisão financeira.</p>
@@ -478,15 +503,23 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offs
         </div>
       </div>
       <div class="project-card reveal">
-        <div class="p-head"><span></span><span></span><span></span><b>STATUS: PROTÓTIPO</b></div>
+        <div class="p-head"><span class="red"></span><span class="yellow"></span><span class="green"></span><b>STATUS: EM PRODUÇÃO</b></div>
         <div class="p-body">
           <h3>Sistema de Gestão de Assembleias</h3>
-          <p>Protótipo para organizar, registar e acompanhar assembleias, do planeamento à acta final.</p>
-          <div class="p-tags"><span>Gestão</span><span>Protótipo</span></div>
+          <p>Plataforma para organizar, registar e acompanhar assembleias, do planeamento à acta final.</p>
+          <div class="p-tags"><span>Gestão</span><span>Em Produção</span></div>
         </div>
       </div>
       <div class="project-card reveal">
-        <div class="p-head"><span></span><span></span><span></span><b>STATUS: SIMULAÇÃO</b></div>
+        <div class="p-head"><span class="red"></span><span class="yellow"></span><span class="green"></span><b>STATUS: FUNCIONAL</b></div>
+        <div class="p-body">
+          <h3>Recomendação de Créditos</h3>
+          <p>Sistema de recomendação baseado em análise preditiva para avaliar risco de crédito e viabilidade financeira.</p>
+          <div class="p-tags"><span>React</span><span>Tailwind</span><span>Python</span><span>Node.js</span><span>PostgreSQL</span></div>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="p-head"><span class="red"></span><span class="yellow"></span><span class="green"></span><b>STATUS: SIMULAÇÃO</b></div>
         <div class="p-body">
           <h3>Simulador de Operações Bancárias</h3>
           <p>Simulador desenvolvido em C para reproduzir operações bancárias essenciais — depósitos, levantamentos e transferências.</p>
@@ -583,6 +616,17 @@ const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
 }, {threshold:.15});
 reveals.forEach(el=>io.observe(el));
+
+/* ---------- CARDS HOVER EFFECT ---------- */
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
 
 /* ---------- UPTIME COUNTER ---------- */
 const start = Date.now();
