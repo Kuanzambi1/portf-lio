@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KapitalDocs — Gestão documental · Emanuel Kuanzambi</title>
+<meta name="description" content="Estudo de caso do KapitalDocs, sistema de gestão documental corporativa desenvolvido por Emanuel Kuanzambi para a Kapital360.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2305070c'/%3E%3Cpath d='M7 16h6M10 8l8 8-8 8' stroke='%2300e5ff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Crect x='19' y='21' width='6' height='3' fill='%2339ff9c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<canvas id="circuit-bg"></canvas>
+<div class="grid-overlay"></div>
+<div class="noise-vignette"></div>
+
+<nav>
+  <a class="logo" href="../index.html"><span class="dot"></span>EK<span>_</span>PORTFOLIO</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#about">Sobre</a></li>
+    <li><a href="../index.html#skills">Skills</a></li>
+    <li><a href="../index.html#projects">Projectos</a></li>
+    <li><a href="../index.html#contact">Contacto</a></li>
+  </ul>
+  <div class="nav-status">ONLINE</div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu de navegação">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<main>
+  <article class="case">
+    <a class="back-link" href="../index.html#projects">← Voltar aos projectos</a>
+    <div class="eyebrow">Caso // Kapital360</div>
+    <h1>KapitalDocs — Gestão documental</h1>
+    <p class="lede">Sistema interno para organizar, partilhar e controlar ficheiros da Kapital360 — com pastas, pesquisa e acesso autenticado.</p>
+
+    <div class="case-meta">
+      <div class="item"><div class="label">Cliente</div><div class="value">Kapital360</div></div>
+      <div class="item"><div class="label">Estado</div><div class="value">Em produção</div></div>
+      <div class="item"><div class="label">Tipo</div><div class="value">Plataforma interna</div></div>
+      <div class="item"><div class="label">Live</div><div class="value">docs.kapital360.ao</div></div>
+    </div>
+
+    <figure class="case-hero-img reveal">
+      <img src="../img/docs-home.png" alt="Área de documentos do KapitalDocs com pastas e upload">
+    </figure>
+
+    <div class="case-layout">
+      <div class="case-copy reveal">
+        <h2>O problema</h2>
+        <p>Documentos críticos espalhados por pastas locais e e-mails atrasam o trabalho e dificultam o controlo de quem acede a quê.</p>
+        <h2>A solução</h2>
+        <ul>
+          <li>Login com sessão autenticada e área restrita a utilizadores da empresa.</li>
+          <li>Navegação por pastas e subpastas (ex.: Documentos TI / Kapital 360).</li>
+          <li>Upload por drag &amp; drop, com tipos permitidos e limite de tamanho.</li>
+          <li>Pesquisa, listagem com tamanho/data e acções sobre cada ficheiro, incluindo download em ZIP.</li>
+          <li>Gestão de utilizadores no próprio produto.</li>
+        </ul>
+        <h2>Impacto</h2>
+        <p>O fluxo documental passa a ter um sítio único, pesquisável e com controlo de acesso — em produção em <a href="https://docs.kapital360.ao/" target="_blank" rel="noopener" style="color:var(--cyan)">docs.kapital360.ao</a>.</p>
+      </div>
+      <aside class="case-aside reveal">
+        <h3>Capacidades</h3>
+        <div class="mod">Upload drag &amp; drop</div>
+        <div class="mod">Pastas e subpastas</div>
+        <div class="mod">Download em ZIP</div>
+        <div class="mod">Controlo de acesso</div>
+        <div class="mod">Gestão de utilizadores</div>
+      </aside>
+    </div>
+
+    <div class="gallery">
+      <figure class="reveal">
+        <img src="../img/docs-login.png" alt="Ecrã de login do KapitalDocs">
+        <figcaption>01 // Autenticação</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="../img/docs-home.png" alt="Listagem de documentos e zona de upload">
+        <figcaption>02 // Repositório e upload</figcaption>
+      </figure>
+    </div>
+
+    <div class="case-cta">
+      <a class="btn primary" href="https://docs.kapital360.ao/" target="_blank" rel="noopener">Abrir KapitalDocs</a>
+      <a class="btn ghost" href="../index.html#projects">Todos os projectos</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div>© <span id="year"></span> Emanuel Kuanzambi — Todos os direitos reservados.</div>
+  <div>SYSTEM UPTIME: <span class="uptime" id="uptime">00:00:00</span></div>
+</footer>
+<script src="../js/app.js"></script>
+</body>
+</html>

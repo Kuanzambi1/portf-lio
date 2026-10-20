@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENSA — Gestão de Assembleias Gerais · Emanuel Kuanzambi</title>
+<meta name="description" content="Estudo de caso do Sistema de Gestão de Assembleias Gerais da ENSA Seguros de Angola — desenvolvido por Emanuel Kuanzambi.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2305070c'/%3E%3Cpath d='M7 16h6M10 8l8 8-8 8' stroke='%2300e5ff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Crect x='19' y='21' width='6' height='3' fill='%2339ff9c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<canvas id="circuit-bg"></canvas>
+<div class="grid-overlay"></div>
+<div class="noise-vignette"></div>
+
+<nav>
+  <a class="logo" href="../index.html"><span class="dot"></span>EK<span>_</span>PORTFOLIO</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#about">Sobre</a></li>
+    <li><a href="../index.html#skills">Skills</a></li>
+    <li><a href="../index.html#projects">Projectos</a></li>
+    <li><a href="../index.html#contact">Contacto</a></li>
+  </ul>
+  <div class="nav-status">ONLINE</div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu de navegação">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<main>
+  <article class="case">
+    <a class="back-link" href="../index.html#projects">← Voltar aos projectos</a>
+    <div class="eyebrow">Caso em destaque // ENSA Seguros</div>
+    <h1>Gestão de Assembleias Gerais</h1>
+    <p class="lede">Plataforma em produção para a ENSA Seguros de Angola: do check-in do accionista ao resultado da votação, com quórum e pesos por acções em tempo real.</p>
+
+    <div class="case-meta">
+      <div class="item"><div class="label">Cliente</div><div class="value">ENSA Seguros de Angola</div></div>
+      <div class="item"><div class="label">Estado</div><div class="value">Em produção</div></div>
+      <div class="item"><div class="label">Papel</div><div class="value">Desenvolvimento fullstack</div></div>
+      <div class="item"><div class="label">Âmbito</div><div class="value">Assembleias · votação · presenças</div></div>
+    </div>
+
+    <figure class="case-hero-img reveal">
+      <img src="../img/ensa-login.png" alt="Login da plataforma de Assembleias Gerais da ENSA">
+    </figure>
+
+    <div class="case-layout">
+      <div class="case-copy reveal">
+        <h2>O problema</h2>
+        <p>Uma assembleia geral de accionistas junta credenciação, quórum, votação ponderada e documentação. Feito no papel ou em folhas soltas, o processo é lento, difícil de auditar e pouco transparente no momento da deliberação.</p>
+        <h2>A solução</h2>
+        <ul>
+          <li>Acesso restrito a utilizadores autorizados, com sessão autenticada.</li>
+          <li>Check-in de presenças por leitura de QR no cartão do accionista, com câmara no posto de entrada.</li>
+          <li>Painel de quórum: capital representado versus mínimo exigido (ex.: 51%), presenças e acções em sala.</li>
+          <li>Votação presencial com resultado a favor / contra / abstenção, ponderado por número de acções, e estado Aprovado quando o limiar é atingido.</li>
+          <li>Módulos de accionistas, assembleias, QR codes, utilizadores e configurações para a operação completa do dia.</li>
+        </ul>
+        <h2>Impacto</h2>
+        <p>A assembleia deixa de depender de folhas manuais: a presença é registada na hora, o quórum é visível e o resultado da deliberação fica documentado com o peso real de cada voto.</p>
+      </div>
+      <aside class="case-aside reveal">
+        <h3>Módulos</h3>
+        <div class="mod">Início / painel da assembleia</div>
+        <div class="mod">Accionistas</div>
+        <div class="mod">Assembleias</div>
+        <div class="mod">Check-in de presenças (QR)</div>
+        <div class="mod">QR Codes</div>
+        <div class="mod">Votação presencial</div>
+        <div class="mod">Utilizadores e configurações</div>
+      </aside>
+    </div>
+
+    <div class="gallery">
+      <figure class="reveal">
+        <img src="../img/ensa-checkin.jpg" alt="Check-in de presenças com leitura de QR e painel de quórum">
+        <figcaption>01 // Check-in — leitura QR e quórum</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="../img/ensa-resultado.png" alt="Resultado de votação com percentagens e estado aprovado">
+        <figcaption>02 // Resultado — votos ponderados por acções</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="../img/logo-ensa.png" alt="Logótipo ENSA Seguros de Angola">
+        <figcaption>03 // Identidade — ENSA Seguros de Angola</figcaption>
+      </figure>
+    </div>
+
+    <div class="case-cta">
+      <a class="btn ghost" href="../index.html#projects">Todos os projectos</a>
+      <a class="btn primary" href="../index.html#contact">Contactar</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div>© <span id="year"></span> Emanuel Kuanzambi — Todos os direitos reservados.</div>
+  <div>SYSTEM UPTIME: <span class="uptime" id="uptime">00:00:00</span></div>
+</footer>
+<script src="../js/app.js"></script>
+</body>
+</html>
